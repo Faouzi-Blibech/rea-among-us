@@ -22,8 +22,17 @@ Reverse-engineering study of **Among Us mobile** (Android build 2026.9.29, Unity
 | [07](docs/07-client-architecture.md) | Scenes, HUD, input, chat, localization, accounts, cosmetics, store |
 | [08](docs/08-tech-stack-and-assets.md) | Engine, libraries, package layout, assets |
 | [09](docs/09-recreation-blueprint.md) | Design proposal for our clone |
+| [logic](docs/logic/) | Exact rules recovered from decompiled functions: sabotage and systems, kill and roles, meetings/votes/wins/assignment, movement/network/options |
 | [data/maps](docs/data/maps/README.md) | Rooms, vents (with links), consoles, doors, spawns for 6 maps |
 | [data/gameplay](docs/data/gameplay/README.md) | Tuning values from serialized assets |
+
+## Code
+
+`sim/` is our engine-agnostic C# rules library (netstandard2.1, loads in Unity, Godot or a .NET server), written from `docs/logic/`:
+
+```bash
+dotnet test sim/Sim.sln
+```
 
 ## Reproduce
 
@@ -31,6 +40,7 @@ Reverse-engineering study of **Among Us mobile** (Android build 2026.9.29, Unity
 tools/dump_il2cpp.sh /path/outside/repo          # XAPK + Cpp2IL signature dump
 uv run --with UnityPy python -I tools/extract_map_layout.py --help
 uv run --with UnityPy python -I tools/extract_gameplay_data.py --help
+tools/decompile/run.sh /path/outside/repo /path/to/ghidra   # function logic, study only
 ```
 
 ## Legal

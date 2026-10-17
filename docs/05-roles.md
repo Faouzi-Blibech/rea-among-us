@@ -1,6 +1,6 @@
 # 05 - Roles
 
-> **Data update:** numeric values the code dump lacks (player speed 2.5, kill cooldown default 15, role cooldowns/durations, task MaxStep, map scale, exile timings) were later recovered from serialized assets: see [data/gameplay](data/gameplay/README.md) and [data/maps](data/maps/README.md) (Observed vent graphs with links, consoles with task types). Still unknown after that pass: reactor/O2 countdowns, door cooldowns, kill-distance floats, option presets.
+> **Data update:** numeric values the code dump lacks (player speed 2.5, kill cooldown default 15, role cooldowns/durations, task MaxStep, map scale, exile timings) were later recovered from serialized assets: see [data/gameplay](data/gameplay/README.md) and [data/maps](data/maps/README.md) (Observed vent graphs with links, consoles with task types). Those gaps (reactor/O2 countdowns, door cooldowns, kill distances 1.0/1.8/2.5, option presets) and the exact rule logic were then recovered from decompiled functions: see [logic/](logic/). Where this doc and logic/ disagree, logic/ wins.
 
 Scope: role enum, role class model, every role, role options, role assignment, role RPCs.
 Related docs: networking and RPC framing in `02-*`, gameplay loop in `03-*`, room/lobby options in `04-*`, client UI in `07-*`. This file does not duplicate them.
