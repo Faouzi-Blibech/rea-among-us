@@ -18,6 +18,8 @@ This repo holds reverse-engineering knowledge about Among Us mobile (build 2026.
 | Map layout numbers (rooms, vents + links, consoles, doors, spawns) | `docs/data/maps/<map>.json` + `README.md` |
 | Tuning numbers (speeds, timers, distances, task lengths) | `docs/data/gameplay/*.json` + `README.md` |
 | How the evidence was made, trust levels, legal boundary | `docs/00-methodology-and-evidence.md` |
+| **Exact rules recovered from decompiled functions** (timers, formulas, check order) | `docs/logic/*.md` (start here before implementing a rule) |
+| Our C# rules library and its tests | `sim/` (`dotnet test sim/Sim.sln`) |
 
 Search tip: grep `docs/` for the original class name (e.g. `ShipStatus`, `CheckMurder`, `ReactorSystemType`); every doc cites them.
 
@@ -28,15 +30,16 @@ Every claim is tagged:
 - **Reference**: from the Impostor community server; may be older than the live game.
 - **Inferred**: a guess from names and signatures. Treat as a hypothesis; do not build hard logic on it without a playtest or new evidence.
 
-The dump has **no method bodies**. Algorithms (role assignment, vote tally details, win check order) are Reference or Inferred.
+The signature dump has no method bodies, but 498 key functions were decompiled with Ghidra (`tools/decompile/`). Their behaviour is in `docs/logic/` and tagged **Observed (decompiled)** with the function address. Where `docs/logic/` and docs 02-06 disagree, `docs/logic/` wins.
 
 ## Hard rules
 
 1. **Original work only.** Never copy Innersloth code, art, audio, text, names, map layouts, or trademarks into the product. Use the data to understand scale, pacing and structure, then design our own.
 2. **Never commit** APKs, `.so`, `global-metadata.dat`, decompiled code, or extracted assets. Regenerate locally with `tools/dump_il2cpp.sh` and the extract scripts into a scratch directory outside the repo.
 3. **Server-authoritative rules.** Clients send requests; the server validates and broadcasts results. Never send a player hidden info (other roles, impostor teammates to crew) they may not know. See `docs/09-recreation-blueprint.md` section 7.
-4. **Keep rules engine-agnostic** in `/sim` (see blueprint section 2) and cover them with table-driven unit tests.
+4. **Keep rules engine-agnostic** in `sim/src/Sim` (netstandard2.1, C# 9, so it loads in Unity, Godot and a .NET server). No engine types, no real clocks (time comes in as `dt`), randomness only via `Sim.Core.IRandom`. Cover rules with table-driven xunit tests in `sim/tests/Sim.Tests`.
 5. When you add new reverse-engineering findings, keep the Observed/Reference/Inferred tags and cite a source.
+6. **Never commit decompiled output** (`re/out*`, `.c` files from Ghidra). Specs paraphrase behaviour; code is written from specs.
 
 ## Tools
 
@@ -45,5 +48,6 @@ The dump has **no method bodies**. Algorithms (role assignment, vote tally detai
 | `tools/dump_il2cpp.sh <work_dir>` | Download the XAPK and produce the Cpp2IL C# signature dump |
 | `tools/extract_map_layout.py` | Map layout JSON from the maps Addressables bundle (UnityPy) |
 | `tools/extract_gameplay_data.py` | Tuning data JSON from serialized assets (UnityPy) |
+| `tools/decompile/run.sh <work_dir> <ghidra_dir>` | Ghidra decompile of selected functions for study (see its README) |
 
 Run Python tools with `uv run --with UnityPy python -I tools/<script>.py --help`.

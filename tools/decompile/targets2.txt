@@ -1,0 +1,17 @@
+^(LogicOptions|LogicOptionsNormal)\tGetKillDistance$
+^EmergencyMinigame\t(Begin|CallMeeting|Update)$
+^(Vent|Console|DoorConsole|OpenDoorConsole)\t(CanUse|Use)$
+^PlayerControl\t(RpcMurderPlayer|CmdCheckMurder|CmdCheckShapeshift|get_CanMove|HandleRpc|RpcStartMeeting|Die|Exiled|RpcSetRole|CoSetRole|CompleteTask|CheckVanish|CheckAppear|CmdCheckProtect)$
+^MeetingHud\t(HandleRpc|Start|Close|CoStartCutscene|RpcClose)$
+^ExileController\t(Begin|BeginForGameplay|WrapUp)$
+^ShipStatus\t(CloseDoorsOfType|OnMeetingCalled|HandleRpc|PrespawnStep|SpawnPlayer)$
+^PlainDoor\t(SetDoorway|DoUpdate|get_IsOpen)$
+^ElectricTask\t(FixedUpdate|get_IsComplete|Initialize)$
+^ShapeshifterRole\t(UseAbility)$
+^\w+Role\t(UseAbility|OnDeath|IsValidTarget|DidWin|CanUse|FixedUpdate|OnMeetingStart|SetCooldown|Initialize)$
+^(AutoDoorsSystemType|ElectricalDoors|MushroomMixupSabotageSystem|VentilationSystem|SecurityCameraSystemType|MedScanSystem|HqHudSystemType)\t
+^AmongUs\.GameOptions\.(NormalGameOptionsV12|RoleOptionsCollectionV10|RoleOptionsCollectionV\d+)\t(get_KillDistance|GetFloat|GetInt|GetBool|GetByte|Validate|.*Chance.*|.*NumberOf.*)$
+^GameOptionsManager\t
+^NetworkedPlayerInfo\t(Serialize|Deserialize|SetTasks|RpcSetTasks|OnGameStart)$
+^GameData\t(HandleDisconnect|OnMeetingStart)$
+^VoteBanSystem\t

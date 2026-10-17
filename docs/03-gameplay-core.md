@@ -1,6 +1,6 @@
 # 03 - Core gameplay systems
 
-> **Data update:** numeric values the code dump lacks (player speed 2.5, kill cooldown default 15, role cooldowns/durations, task MaxStep, map scale, exile timings) were later recovered from serialized assets: see [data/gameplay](data/gameplay/README.md) and [data/maps](data/maps/README.md) (Observed vent graphs with links, consoles with task types). Still unknown after that pass: reactor/O2 countdowns, door cooldowns, kill-distance floats, option presets.
+> **Data update:** numeric values the code dump lacks (player speed 2.5, kill cooldown default 15, role cooldowns/durations, task MaxStep, map scale, exile timings) were later recovered from serialized assets: see [data/gameplay](data/gameplay/README.md) and [data/maps](data/maps/README.md) (Observed vent graphs with links, consoles with task types). Those gaps (reactor/O2 countdowns, door cooldowns, kill distances 1.0/1.8/2.5, option presets) and the exact rule logic were then recovered from decompiled functions: see [logic/](logic/). Where this doc and logic/ disagree, logic/ wins.
 
 Scope: game loop, player model, ship systems and sabotage, meetings and voting, win conditions, Hide and Seek.
 Roles, tasks and maps are in [05](05-roles-and-abilities.md) and [06](06-tasks-and-maps.md); networking in [02](02-networking.md); option tables in [04](04-game-options.md).

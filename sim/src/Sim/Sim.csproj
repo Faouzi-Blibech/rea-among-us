@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- netstandard2.1 + C# 9 so the same DLL loads in Unity, Godot (C#) and a .NET server. -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Sim</RootNamespace>
+  </PropertyGroup>
+
+</Project>

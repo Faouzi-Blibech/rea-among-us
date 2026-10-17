@@ -1,0 +1,10 @@
+^(ReactorSystemType|LifeSuppSystemType|SwitchSystem|HudOverrideSystemType|DoorsSystemType|SabotageSystemType|HeliSabotageSystem|LogicGameFlowNormal|LogicRoleSelectionNormal|CustomNetworkTransform|LogicOptionsNormal|ImpostorRole|RoleBehaviour)\t
+^\w*(ShipStatus|AirshipStatus)\t(\.ctor|OnEnable|Awake|Begin|CalculateLightRadius|RepairCriticalSabotages|AddTasksFromList|AssignTaskIndexes|StartMeeting|FixedUpdate|UpdateSystem)$
+^PlayerControl\t(CheckMurder|MurderPlayer|ReportDeadBody|CmdReportDeadBody|SetKillTimer|FixedUpdate|CheckProtect|CheckShapeshift)$
+^MeetingHud\t(CastVote|CmdCastVote|Update|PopulateResults|VotingComplete|CheckForEndVoting|.*CalculateVotes|SetVoteComplete|GetVotesRemaining)$
+^GameManager\t(CheckEndGameViaTasks|CheckTaskCompletion|DidHumansWin|DidImpostorsWin|CanReportBodies)$
+^GameData\t(RecomputeTaskCounts|CompleteTask)$
+^RoleManager\t(SelectRoles|AssignRoleOnDeath|TryAssignSpecialGhostRoles)$
+^PlayerPhysics\t(FixedUpdate|get_TrueSpeed|get_SpeedMod|HandleAnimation)$
+^AmongUs\.GameOptions\.(NormalGameOptionsV12|LegacyGameOptions)\t(\.cctor|\.ctor|SetRecommendations)$
+^IGameOptionsExtensions\t(\.cctor|SetRecommendations|GetAdjustedNumImpostors)$
